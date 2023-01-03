@@ -12,11 +12,16 @@ Additional dependencies will be pip-installed in the Docker build.
 Build the Docker image:
 
 ```dockerfile
-docker build -t jupyter .
+docker build -t jupyter-project .
 ```
 
-Run the Docker container in detached mode:
+Run the Docker container:
 
 ```dockerfile
-docker run -d --rm -p 8888:8888 -v $PWD/app:/home/jovyan --hostname $USER jupyter
+docker run --rm \
+    -p 8888:8888 \
+    -v $PWD/project:/home/jovyan/work \
+    -w "/home/jovyan/work" \
+    -h $USER \
+    jupyter-project
 ```

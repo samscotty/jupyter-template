@@ -1,6 +1,6 @@
-ARG BASE_CONTAINER=jupyter/scipy-notebook:latest
+ARG BASE_IMAGE=jupyter/scipy-notebook:latest
 
-FROM $BASE_CONTAINER
+FROM $BASE_IMAGE
 
 # Switch to root (newer base image does not start off root)
 USER root
@@ -8,10 +8,7 @@ USER root
 # Install additional pip requirements
 COPY requirements.txt /tmp/
 
-RUN pip install -r /tmp/requirements.txt --no-cache-dir
+RUN pip install -r /tmp/requirements.txt --no-cache-dir && \
+    rm /tmp/requirements.txt
 
 USER $NB_USER
-
-EXPOSE 8888
-
-CMD ["jupyter", "lab", "--NotebookApp.token=''"]
