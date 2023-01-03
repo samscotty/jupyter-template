@@ -1,7 +1,5 @@
-# jupyter
-.bash_history
-.cache/
+# Environments
+.env
+
+# Jupyter
 .ipynb_checkpoints
-.ipython/
-.jupyter/
-.local/
