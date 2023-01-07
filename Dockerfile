@@ -11,4 +11,13 @@ COPY requirements.txt /tmp/
 RUN pip install -r /tmp/requirements.txt --no-cache-dir && \
     rm /tmp/requirements.txt
 
+# Install local Python packages
+COPY scripts/build_lib.sh /tmp/
+
+COPY lib/ /tmp/lib/
+
+RUN /tmp/build_lib.sh "/tmp/lib/" "/tmp/lib/*/" && \
+    rm -r /tmp/lib/ && \
+    rm /tmp/build_lib.sh
+
 USER $NB_USER
