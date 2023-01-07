@@ -4,10 +4,35 @@ Repository template for creating Dockerised Jupyter environments.
 
 ## Usage
 
+### New project set up
+
 Create a new repository from the template.
 
-Update the requirements file to manage additional package dependencies specific to the project.
+Update the README with information about the project.
+
+### Managing dependencies
+
+Update the [requirements file](requirements.txt) to manage additional third-party package dependencies specific to your project.
+
+For local project installs, copy the directories of your packages into the [`lib`](lib/) folder:
+
+```sh
+lib
+├── README.md
+└── my-package
+    ├── pyproject.toml
+    ├── README.md
+    ├── my_package
+    │   ├── __init__.py
+    │   └── my_module.py
+    └── tests
+        ├── __init__.py
+        └── test_my_module.py
+```
+
 Additional dependencies will be pip-installed in the Docker build.
+
+### Starting the container
 
 Build the Docker image:
 
