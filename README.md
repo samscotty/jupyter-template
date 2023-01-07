@@ -47,7 +47,7 @@ docker run --rm \
     -p 8888:8888 \
     -v $PWD/project:/home/jovyan/work \
     -w "/home/jovyan/work" \
-    -h $USER \
+    -h "localhost" \
     jupyter-project
 ```
 
