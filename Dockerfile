@@ -12,12 +12,10 @@ RUN pip install -r /tmp/requirements.txt --no-cache-dir && \
     rm /tmp/requirements.txt
 
 # Install local Python packages
-COPY scripts/build_lib.sh /tmp/
-
 COPY lib/ /tmp/lib/
+COPY scripts/ /tmp/scripts/
 
-RUN /tmp/build_lib.sh "/tmp/lib/" "/tmp/lib/*/" && \
-    rm -r /tmp/lib/ && \
-    rm /tmp/build_lib.sh
+RUN /tmp/scripts/build_lib.sh "/tmp/lib/" && \
+    rm -r /tmp/lib/ /tmp/scripts/
 
 USER $NB_USER
