@@ -48,6 +48,7 @@ docker run --rm \
     -v $PWD/project:/home/jovyan/work \
     -w "/home/jovyan/work" \
     -h "localhost" \
+    -e JUPYTER_DATA_DIR="/home/jovyan/work/data" \
     jupyter-project
 ```
 
