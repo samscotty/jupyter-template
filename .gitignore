@@ -3,3 +3,8 @@
 
 # Jupyter
 .ipynb_checkpoints
+
+# Temporary and binary files
+*~
+*.py[cod]
+__pycache__/*
